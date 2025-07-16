@@ -1,0 +1,154 @@
+version: 2
+
+models:
+  - name: dim_movies
+    description: Dimension table containing data related to movie information
+    columns:
+      - name: movie_id
+        description: Primary key of the dim_movies table
+        tests:
+          - not_null
+          - unique
+
+      - name: title
+        description: Title of the movie
+        tests:
+          - not_null
+
+      - name: released_year
+        description: Year in which the movie was released
+
+      - name: is_multi_genre
+        description: Indicates if the movie belongs to multiple genres ('Yes'/'No')
+
+      - name: imdb_id
+        description: IMDB ID for external reference
+
+      - name: tmdb_id
+        description: TMDB ID for external reference
+
+
+
+  - name: dim_users
+    description: Dimension table containing data related to user information
+    columns:
+      - name: user_id
+        description: id of the user (Primary key)
+        tests:
+          - unique
+          - not_null
+
+
+  - name: fact_ratings
+    description: fact table containing data related to ratings information
+    columns:
+      - name: movie_id
+        description: Foreign key to dim_movies
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_movies')
+              field: movie_id
+
+      - name: user_id
+        description: Foreign key to dim_users
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_users')
+              field: user_id
+
+      - name: rating
+        description: Rating given by the user (e.g., 3.5 stars)
+
+      - name: rating_timestamp
+        description: Full timestamp when the rating was given
+
+      - name: rating_date
+        description: Date extracted from rating_timestamp
+
+      - name: rating_time
+        description: Time extracted from rating_timestamp 
+
+  
+  - name: dim_genome_tags
+    description: Dimension table containing genome tag definitions used for content-based recommendations
+    columns:
+      - name: tag_id
+        description: Primary key for the dim_genome_tags table
+        tests:
+          - not_null
+          - unique
+
+      - name: tag
+        description: Descriptive name of the genome tag
+        tests:
+          - not_null
+
+  - name: fact_tags
+    description: Fact table capturing user-generated tags on movies
+    columns:
+      - name: movie_id
+        description: Foreign key to dim_movies
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_movies')
+              field: movie_id
+
+      - name: user_id
+        description: Foreign key to dim_users
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_users')
+              field: user_id
+
+      - name: tag
+        description: Tag assigned by the user to the movie
+        tests:
+          - not_null
+
+      - name: tag_timestamp
+        description: Full timestamp when the tag was added
+
+      - name: tag_date
+        description: Date extracted from tag_timestamp
+
+      - name: tag_time
+        description: Time extracted from tag_timestamp
+
+  - name: fact_genome_scores
+    description: Fact table containing tag relevance scores for movies
+    columns:
+      - name: movie_id
+        description: Foreign key to dim_movies
+        tests: 
+          - not_null
+          - relationships: 
+              to: ref('dim_movies')
+              field: movie_id
+
+      - name: tag_id
+        description: Foreign key to dim_genome_tags
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_genome_tags')
+              field: tag_id
+
+      - name: relevance
+        description: Numeric score indicating how relevant the tag is to the movie
+
+
+  - name: rating
+    description: Rating given by the user (e.g., 3.5 stars)
+    tests:
+      - test_rating_range
+
+
+        
+
+
+
+
