@@ -1,3 +1,4 @@
+# movielens_analytics_dbt
 Welcome to your new dbt project!
 
 ### Using the starter project
