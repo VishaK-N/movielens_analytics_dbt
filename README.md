@@ -2,7 +2,7 @@
 This project is developed to perform the movie analysis on the historical data. In this the data is sourced, cleaned, and loaded in the data warehouse. From there, the data is analyzed to find patterns, and also we can build a movie recommendation system.
 
 ## 📊 Project flow:
-📁 ADLS → 🚰 Airbyte → ❄ Snowflake (DBT) [🟫 Bronze] → ❄ Snowflake (DBT) [🥈 Silver] → ❄ Snowflake (DBT) [🥇 GOLD]
+📁 ADLS → 🚰 Airbyte → ❄ Snowflake[🟫 Bronze] --(DBT)-→ ❄ Snowflake[🥈 Silver] --(DBT)-→  ❄ Snowflake[🥇 GOLD]
 
 In this project, I have connected the Gold layer with **AskYourDatabase**, enabling text-to-SQL querying 🗣️➡️📊 without the need to manually write SQL scripts 📝❌.
 
