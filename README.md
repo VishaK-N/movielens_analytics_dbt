@@ -7,15 +7,15 @@ This project is developed to perform the movie analysis on the historical data. 
 In this project, I have connected the Gold layer with **AskYourDatabase**, enabling text-to-SQL querying 🗣️➡️📊 without the need to manually write SQL scripts 📝❌.
 
 - First the data will be in the Azure Data Lake
-- Then using Airbyte (EL Tool), data will be ingested and loaded into Snowflake (Bronze)
+- Then using Airbyte (EL Tool), data will be ingested and loaded into Snowflake (Bronze) **OR**
 - In Snowflake, creating a stage would help to fetch the data from the ADLS container
 - From there, data is transformed using DBT and moved through different layers,
 - The final output will be in Fact and Dimensional Tables (in the Gold layer)
 
 ## 🧰 Tech Stack Learned:
--🛠️ DBT (Data Build Tool)
--☁️ Azure Data Lake
--❄️ Snowflake
--🔄 Airbyte
--🐙 GitHub
+- 🛠️ DBT (Data Build Tool)
+- ☁️ Azure Data Lake
+- ❄️ Snowflake
+- 🔄 Airbyte
+- 🐙 GitHub
 -🤖 AskYourDatabase
