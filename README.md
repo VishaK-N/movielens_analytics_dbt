@@ -13,9 +13,9 @@ In this project, I have connected the Gold layer with **AskYourDatabase**, enabl
 - The final output will be in Fact and Dimensional Tables (in the Gold layer)
 
 ## 🧰 Tech Stack Learned:
-🛠️ DBT (Data Build Tool)
-☁️ Azure Data Lake
-❄️ Snowflake
-🔄 Airbyte
-🐙 GitHub
-🤖 AskYourDatabase
+-🛠️ DBT (Data Build Tool)
+-☁️ Azure Data Lake
+-❄️ Snowflake
+-🔄 Airbyte
+-🐙 GitHub
+-🤖 AskYourDatabase
