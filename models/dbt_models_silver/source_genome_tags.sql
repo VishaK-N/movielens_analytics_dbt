@@ -1,3 +1,6 @@
+-- dbt model to create a table `source_genome_tags` in the Snowflake `silver` schema
+-- using data from the `raw_genome_tags` table in the `raw` schema
+
 with raw_genome_tags as(
     select * from {{ source('movie_dataset_bronze','raw_genome_tags') }}
 )
