@@ -1,13 +1,15 @@
--- models/dim_movies.sql
+-- dbt model to create a table `dim_movies` in the Snowflake `gold` schema
+-- using data from the `source_movies` and `source_links` table in the `silver` schema
+
 WITH movies AS (
     SELECT
         MOVIE_ID,
         TITLE,
-        REGEXP_SUBSTR(TITLE, '\\d{4}') AS RELEASED_YEAR,
+        REGEXP_SUBSTR(TITLE, '\\d{4}') AS RELEASED_YEAR,  --  fetching only the year
         GENRES ,
         CASE 
             WHEN GENRES LIKE '%|%' THEN 'Yes'
-            ELSE 'No'
+            ELSE 'No'                                     -- multi genre or not
         END AS IS_MULTI_GENRE,
     FROM {{ source('movie_dataset_silver','source_movies') }}
 ),

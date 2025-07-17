@@ -1,3 +1,6 @@
+-- dbt model to create a table `dim_users` in the Snowflake `gold` schema
+-- using data from the `source_ratings` in the `silver` schema and 
+-- `user_information` from the seed folder
 
 SELECT distinct u.user_id , ui.user_name, ui.age, ui.location as located_at
 from {{ source('movie_dataset_silver','source_ratings') }} as u

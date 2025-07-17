@@ -1,4 +1,8 @@
--- models/dbt_models_gold/fact/fact_ratings.sql
+-- dbt model to create a table `fact_ratings` in the Snowflake `gold` schema
+-- using data from the `source_ratings` which is in the `silver` schema
+
+-- here the materialization is incremental, (i.e) the data will be incrementally loaded
+-- based on the condition RATING_TIMESTAMP >= (SELECT MAX(RATING_TIMESTAMP)
 
 {{ config(
     materialized = 'incremental',
