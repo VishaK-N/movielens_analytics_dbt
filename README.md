@@ -11,3 +11,11 @@ In this project, I have connected the Gold layer with **AskYourDatabase**, enabl
 - In Snowflake, creating a stage would help to fetch the data from the ADLS container
 - From there, data is transformed using DBT and moved through different layers,
 - The final output will be in Fact and Dimensional Tables (in the Gold layer)
+
+## 🧰 Tech Stack Learned:
+🛠️ DBT (Data Build Tool)
+☁️ Azure Data Lake
+❄️ Snowflake
+🔄 Airbyte
+🐙 GitHub
+🤖 AskYourDatabase
