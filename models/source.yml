@@ -1,3 +1,7 @@
+# Defining the source for the model, it can be accessed  using the source function
+# - Example: {{ source('source_name', 'table_name') }}
+
+
 version: 2
 
 sources:

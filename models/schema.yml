@@ -1,3 +1,10 @@
+# implemented the generic testing, where setting some constraints like
+# unique, not null, relationships (reference key) to each table in the gold schema
+
+# - unique: Ensures values in a column are unique (e.g., primary keys).
+# - not_null: Ensures no null values are present in specific columns.
+# - relationships: Validates foreign key references between tables.
+
 version: 2
 
 models:

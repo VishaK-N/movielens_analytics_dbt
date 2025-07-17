@@ -35,11 +35,13 @@ models:
     
     dbt_models_gold:
       +materialized: table
-      +schema: movie_dataset_gold
+      +schema: movie_dataset_gold   
+      # custom schema , models here push the output to the movie_dataset_gold
 
     dbt_models_silver:
       +materialized: table
       +schema: movie_dataset_silver
+      # custom schema , models here push the output to the movie_dataset_silver
 
 
 
