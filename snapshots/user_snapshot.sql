@@ -11,7 +11,7 @@
     target_schema='movie_dataset_snapshot',  
     unique_key='user_id',
     strategy='check',
-    check_cols=['location']
+    check_cols=['located_at']
   )
 }}
 
@@ -19,10 +19,9 @@ SELECT
     user_id,
     user_name,
     age,
-    location
+    located_at
 FROM {{ ref('dim_users') }}
 
 {% endsnapshot %}    
-
 
 
