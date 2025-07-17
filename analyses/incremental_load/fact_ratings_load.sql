@@ -1,15 +1,6 @@
--- checking the latest rated details (based on the time)
+-- after running the dbt fact_ratings model,
+-- we would only get only the record '2015-04-30 23:11:28.000 -0700' based on the condition
 
-select * from fact_ratings 
-order by rating_timestamp desc
-LIMIT 3;
-
-select * from fact_ratings 
-where rating_timestamp = '2015-03-31 23:11:28.000 -0700';
-
-
-select * from fact_ratings 
-where rating_timestamp = '2015-03-30 23:40:02.000 -0700';
-
-SELECT MAX(rating_timestamp) FROM fact_ratings;
-
+select * from fact_ratings
+where RATING_TIMESTAMP = '2015-04-30 23:11:28.000 -0700' or 
+RATING_TIMESTAMP = '2015-03-29 23:40:02.000 -0700';
