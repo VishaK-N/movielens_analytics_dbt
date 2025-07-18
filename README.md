@@ -90,7 +90,8 @@ Steps to intiate the project
 - `fact_tags`: source_tags will be the source
 - Source of the model should be the Silver layer data from the Snowflake.
 - Run the dbt models and it should be loading the data into the Gold layer of Snowflake.
-<img src='ScreenShots/fact_ratings_ss.png' alt='fact_ratings' width='500'>
+<img src='ScreenShots/incremental_check_ss.png' alt='incre_check' width='500'>
+<img src='ScreenShots/incremental_result_ss.png' alt='incre_result' width='500'>
 
 - **📌 Notes**
 - Same as the silver folder, source and customer schema is applied here.
@@ -101,7 +102,7 @@ Steps to intiate the project
 ### 🔗 Step 7: Connecting the Snowflake schema with AskYourDatabase
 - In the AskYourDatabase, create SQL AI bot with Snowflake Goldlayer as the Datasource.
 - This allows text-to-SQL querying without writing manual SQL, enabling easy access to insights directly from the Gold layer.
-<img src='askyour_db_screenshots/AYDB_HOME.png' alt='AskDB' width='500'>
+<img src='askyourdb_screenshots/AYDB_HOME.png' alt='AskDB' width='500'>
 
 ### 🛡️ Step 8: Implementing the Testing and Snapshot
 ##### 📌SnapShot
