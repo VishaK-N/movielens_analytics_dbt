@@ -33,7 +33,7 @@ Steps to intiate the project
 - Create account in **Azure Cloud**, **Snowflake**, **Airbyte**, **AskYourDatabase**
 
 ### Step 2: Create the Azure Container (ADLS)
-- Creating the conatine is necessary, that act as a source in this project
+- Creating the conatiner is necessary, that act as a source in this project
 <img src="ScreenShots/source_container_ss.png" alt="source_container" width="500">
 
 ### Step 3: Create the Airbyte Connection or Creata a Stage in Snowflake
