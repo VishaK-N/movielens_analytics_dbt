@@ -37,13 +37,15 @@ Steps to intiate the project
    - AskYourDatabase – for text-to-SQL querying on top of Snowflake
      
 ### Step 2: Create the Azure Container (ADLS)
-- Creating the conatiner is necessary, that act as a source in this project
+- Creating the conatiner is necessary, that act as a source in this project.
 <img src="ScreenShots/source_container_ss.png" alt="source_container" width="500">
 
 ### 🔗 Step 3: Create the Airbyte Connection or Creata a Stage in Snowflake
 - option1 : Implement a connection between Azure container and Snowflake to transfer the data **OR**
-- option2 : Create a Stage in Snowfalke with ADLS and copy the file from ADLS to Snowflake
+- option2 : Create a Stage in Snowfalke with ADLS and copy the file from ADLS to Snowflake.
 - ✅ Make Sure to load the data into the `bronze Schema`
+<img src='ScreenShots/airbyte1_ss.png' alt='airbyte1' widht='500'>
+<img src='ScreenShots/airbyte2_ss.png' alt='airbyte2' widht='500'>
 
 ### 🏗️ Step 4: Create database and schema in the Snowflake
 - Create a new database
@@ -52,21 +54,26 @@ Steps to intiate the project
     - `MOVIE_DATASET_BRONZE`
     - `MOVIE_DATASET_SIVLER`
     - `MOVIE_DATASET_GOLD`
+<img src='ScreenShots/Snowflake_db_ss.png' alt='snow_db' widht='500'>
+<img src='ScreenShots/bronze_schema_ss.png' alt='bronze' widht='500'>
+<img src='ScreenShots/silver_schema_ss.png' alt='silver' widht='500'>
+<img src='ScreenShots/gold_schema_ss.png' alt='gold_schema' widht='500'>
   
-### Step 5: Create dbt models (which load the transformed data into the `MOVIE_DATASET_SIVLER`)
-- Create a folder **dbt_models_silver** under the models folder
-- Creata dbt models with select command and make some changes  like cleaning and changing some naming convention
-- Source of the model should be the Bronze data from the Snowflake
-- Run the dbt models and it should be loading the data into the Silver layer of Snowflake
+### 🛠️ Step 5: Create dbt models (which load the transformed data into the `MOVIE_DATASET_SIVLER`)
+- Create a folder **dbt_models_silver** under the models folder.
+- Creata dbt models with select command and make some changes  like cleaning and changing some naming convention.
+- Source of the model should be the Bronze data from the Snowflake.
+- Run the dbt models and it should be loading the data into the Silver layer of Snowflake.
 
 - **📌 Notes**
 - Define sources in the `source.yml` file to allocate source storage.
 - To load data into a specific storage, update the schema value in the dbt_project.yml file.
 - To enable custom schema logic, create the appropriate macros (UDF) script in the macros/ directory.
+  <img src='ScreenShots/dbt_local_ss.png' alt='dbt' widht='500'>
 
 ### 🛠️ Step 6: Create dbt models (Loading transformed data into the `MOVIE_DATASET_GOLD`)
-- Create a folder **dbt_models_gold** under the models folder
-- Within that creating a dim and fact folder
+- Create a folder **dbt_models_gold** under the models folder.
+- Within that creating a dim and fact folder.
 
 #### 📘 DIM Models
 - `dim_genome_tags`: source_genome_tags will be the source
@@ -77,6 +84,9 @@ Steps to intiate the project
        - `IS_MULTI_GENRE`
 - `dim_users`:
     - Joins `source_ratings` with `user_information` (which is stored as a seed in dbt).
+<img src='ScreenShots/dim_users_ss.png' alt='dim_users' widht='500'>
+<img src='ScreenShots/dim_movies_ss.png' alt='dim_movies' widht='500'>
+<img src='ScreenShots/dim_movies2_ss.png' alt='dim_movies2' widht='500'>
   
 #### 📗 Fact Models
 - `fact_genome_scores`: `source_genome_scores` will be the source.
@@ -84,24 +94,27 @@ Steps to intiate the project
     - Uses **incremental materialization**
     - Loads data where `RATING_TIMESTAMP >= (SELECT MAX(RATING_TIMESTAMP))`, ensuring new data is added and existing records are updated.
 - `fact_tags`: source_tags will be the source
-- Source of the model should be the Silver layer data from the Snowflake
-- Run the dbt models and it should be loading the data into the Gold layer of Snowflake
+- Source of the model should be the Silver layer data from the Snowflake.
+- Run the dbt models and it should be loading the data into the Gold layer of Snowflake.
+<img src='ScreenShots/fact_ratings_ss.png' alt='fact_ratings' widht='500'>
 
 - **📌 Notes**
 - Same as the silver folder, source and customer schema is applied here.
   
-* Finally, there will be Galaxy Schema model in the Gold layer of the Snowflake. 
+* Finally, there will be Galaxy Schema model in the Gold layer of the Snowflake.
+<img src='ScreenShots/gold_schema_ss.png' alt='gold_schema' widht='500'>
 
 ### 🔗 Step 7: Connecting the Snowflake schema with AskYourDatabase
-- In the AskYourDatabase, create SQL AI bot with Snowflake Goldlayer as the Datasource
+- In the AskYourDatabase, create SQL AI bot with Snowflake Goldlayer as the Datasource.
 - This allows text-to-SQL querying without writing manual SQL, enabling easy access to insights directly from the Gold layer.
 
-### Step 8: Implementing the Testing and Snapshot
+### 🛡️ Step 8: Implementing the Testing and Snapshot
 ##### 📌SnapShot
 - Creating a Snapshot (SCD type 2), which will have the track is of the location of the user.
-- If the user change the location, New record will be the created and valid_to will be null
-- And valid_to previous location will set to the current time
+- If the user change the location, New record will be the created and valid_to will be null.
+- And valid_to previous location will set to the current time.
 - Command used: **dbt snapshot**
+<img src='ScreenShots/snapshot_result_ss.png' alt='snapshot' width='500'>
 
 ##### 🧪Testing
 - Creating a schema.yml where the generic test like constraints- unique, not null, ref key will be defined.
