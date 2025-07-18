@@ -45,7 +45,7 @@ Steps to intiate the project
 - Create a new database (`DBT Project`)
 - Create schema `MOVIE_DATASET_BRONZE`, `MOVIE_DATASET_SIVLER`, `MOVIE_DATASET_GOLD`
   
-### Step 4: Create dbt models (which load the data into the `MOVIE_DATASET_SIVLER`)
+### Step 4: Create dbt models (which load the transformed data into the `MOVIE_DATASET_SIVLER`)
 - Create a folder **dbt_models_silver** under the models folder
 - Creata dbt models with select command and make some changes  like cleaning and changing some naming convention
 - Source of the model should be the Bronze data from the Snowflake
@@ -58,7 +58,7 @@ Steps to intiate the project
 
 --
 
-### Step 4: Create dbt models (which load the data into the `MOVIE_DATASET_GOLD`)
+### Step 4: Create dbt models (which load the transformed data into the `MOVIE_DATASET_GOLD`)
 - Create a folder **dbt_models_gold** under the models folder
 - Within that creating a dim and fact folder
 
