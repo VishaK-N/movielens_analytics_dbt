@@ -12,6 +12,14 @@ In this project, I have connected the Gold layer with **AskYourDatabase**, enabl
 - From there, data is transformed using DBT and moved through different layers,
 - The final output will be in Fact and Dimensional Tables (in the Gold layer)
 
+## Getting started 
+
+Steps to intiate the project
+
+### Step 1: create the Azure Container
+- creating the conatine is necessary, that act as a source in this project
+<img src="ScreenShots/">
+
 ## 🧰 Tech Stack Learned:
 - 🛠️ DBT (Data Build Tool)
 - ☁️ Azure Data Lake
