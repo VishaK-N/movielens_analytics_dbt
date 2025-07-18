@@ -44,8 +44,7 @@ Steps to intiate the project
 - option1 : Implement a connection between Azure container and Snowflake to transfer the data **OR**
 - option2 : Create a Stage in Snowfalke with ADLS and copy the file from ADLS to Snowflake.
 - ✅ Make Sure to load the data into the `bronze Schema`
-<img src='ScreenShots/airbyte1_ss.png' alt='airbyte1' width='500'>
-<img src='ScreenShots/airbyte2_ss.png' alt='airbyte2' width='500'>
+<img src='ScreenShots/airbyte1.png' alt='airbyte1' width='500'>
 
 ### 🏗️ Step 4: Create database and schema in the Snowflake
 - Create a new database
@@ -55,9 +54,6 @@ Steps to intiate the project
     - `MOVIE_DATASET_SIVLER`
     - `MOVIE_DATASET_GOLD`
 <img src='ScreenShots/Snowflake_db_ss.png' alt='snow_db' width='500'>
-<img src='ScreenShots/bronze_schema_ss.png' alt='bronze' width='500'>
-<img src='ScreenShots/silver_schema_ss.png' alt='silver' width='500'>
-<img src='ScreenShots/gold_schema_ss.png' alt='gold_schema' width='500'>
   
 ### 🛠️ Step 5: Create dbt models (which load the transformed data into the `MOVIE_DATASET_SIVLER`)
 - Create a folder **dbt_models_silver** under the models folder.
@@ -69,7 +65,7 @@ Steps to intiate the project
 - Define sources in the `source.yml` file to allocate source storage.
 - To load data into a specific storage, update the schema value in the dbt_project.yml file.
 - To enable custom schema logic, create the appropriate macros (UDF) script in the macros/ directory.
-  <img src='ScreenShots/dbt_local_ss.png' alt='dbt' width='500'>
+-  <img src='ScreenShots/dbt_local_ss.png' alt='dbt' width='500'>
 
 ### 🛠️ Step 6: Create dbt models (Loading transformed data into the `MOVIE_DATASET_GOLD`)
 - Create a folder **dbt_models_gold** under the models folder.
@@ -84,9 +80,7 @@ Steps to intiate the project
        - `IS_MULTI_GENRE`
 - `dim_users`:
     - Joins `source_ratings` with `user_information` (which is stored as a seed in dbt).
-<img src='ScreenShots/dim_users_ss.png' alt='dim_users' width='500'>
 <img src='ScreenShots/dim_movies_ss.png' alt='dim_movies' width='500'>
-<img src='ScreenShots/dim_movies2_ss.png' alt='dim_movies2' width='500'>
   
 #### 📗 Fact Models
 - `fact_genome_scores`: `source_genome_scores` will be the source.
@@ -107,7 +101,7 @@ Steps to intiate the project
 ### 🔗 Step 7: Connecting the Snowflake schema with AskYourDatabase
 - In the AskYourDatabase, create SQL AI bot with Snowflake Goldlayer as the Datasource.
 - This allows text-to-SQL querying without writing manual SQL, enabling easy access to insights directly from the Gold layer.
-<img src='askyour_db_screenshots/ATDB_HOME.png' alt='gold_schema' width='500'>
+<img src='askyour_db_screenshots/AYDB_HOME.png' alt='AskDB' width='500'>
 
 ### 🛡️ Step 8: Implementing the Testing and Snapshot
 ##### 📌SnapShot
