@@ -104,7 +104,7 @@ Steps to intiate the project
  - dbt offers the auto documention, it will completely create a documention based on the work we have done.
 
  - Access the live dbt documentation here:  
-👉 [Click here...](https://vishak-n.github.io/movielens_analytics_dbt/)
+👉 [Click for dbt docs](https://vishak-n.github.io/movielens_analytics_dbt/)
 
 
 
