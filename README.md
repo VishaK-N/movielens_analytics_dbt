@@ -73,12 +73,24 @@ Steps to intiate the project
 - Run the dbt models and it should be loading the data into the Gold layer of Snowflake
 
 - **📌 Notes**
-- same as the silver folder, source and customer schema is applicable here.
+- Same as the silver folder, source and customer schema is applied here.
   
 * Finally, there will be Galaxy Schema model in the Gold layer of the Snowflake. 
 
 ### Step 5: Connecting the Snowflake schema with AskYourDatabase
 - In the AskYourDatabase, create SQL AI bot with Snowflake Goldlayer as the Datasource
+
+### Step 6: Implementing the Testing and Snapshot
+##### SnapShot
+- Creating a Snapshot (SCD type 2), which will have the track is of the location of the user.
+- If the user change the location, New record will be the created and valid_to will be null
+- And valid_to previous location will set to the current time
+- **dbt snapshot**
+
+##### Testing
+- Creating a schema.yml where the generic test like constraints- unique, not null, ref key will be defined.
+- Creating a singular test for the customized testing, here ratings should be between 0 and 5, if it returns any value then there is an error.
+- **dbt test**
 
  ### 🚀 USAGE
  ##### Workflow of the project
@@ -87,6 +99,13 @@ Steps to intiate the project
  - Transfering the data using Airbyte or Snowfalke Stage
  - Data transformation by DBT from `Bronze to Silver` and `Silver to Gold`
  - Text-to-SQL querying with the help of AskYourDatabase.
+
+ ### Documention
+ - dbt offers the auto documention, it will completely create a documention based on the work we have done.
+
+ - Access the live dbt documentation here:  
+👉 [Click here...](https://vishak-n.github.io/movielens_analytics_dbt/)
+
 
 
 
