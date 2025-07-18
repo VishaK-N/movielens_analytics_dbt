@@ -56,8 +56,6 @@ Steps to intiate the project
 - To load data into a specific storage, update the schema value in the dbt_project.yml file.
 - To enable custom schema logic, create the appropriate macro (UDF) script in the macros/ directory.
 
---
-
 ### Step 4: Create dbt models (which load the transformed data into the `MOVIE_DATASET_GOLD`)
 - Create a folder **dbt_models_gold** under the models folder
 - Within that creating a dim and fact folder
@@ -77,7 +75,7 @@ Steps to intiate the project
 - **📌 Notes**
 - same as the silver folder, source and customer schema is applicable here.
   
-Finally, there will be Galaxy Schema model in the Gold layer of the Snowflake. 
+* Finally, there will be Galaxy Schema model in the Gold layer of the Snowflake. 
 
 ### Step 5: Connecting the Snowflake schema with AskYourDatabase
 - In the AskYourDatabase, create SQL AI bot with Snowflake Goldlayer as the Datasource
